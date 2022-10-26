@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+<style>
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+</style>
+<head>
+    <meta charset="UTF-8">
+    <title>All Urls</title>
+</head>
+<body>
+
+<button style="background: blue" id="check_all">Check all</button>
+
+<table class="table">
+    {% for url in urls %}
+        <tr class="spechtr" value="0">
+            <th>{{ url.user.username }}</th>
+            <th>{{ url.url }}</th>
+            <th id="{{ url.id }}" class="specth">
+            </th>
+        </tr>
+    {% endfor %}
+</table>
+
+<script>
+    $('#check_all').click(async function (e) {
+            e.preventDefault();
+                await $.ajax({
+                    url: "{% url 'check_url' %}",
+                    type: "GET",
+                    success: function (data) {
+                        const htmlCollect = document.querySelectorAll('.specth')
+                        htmlCollect.forEach(element => {
+                            const result = data?.filter(data => data.id == element.id)
+                            if(result[0].status == true){
+                                element.innerHTML = `<button class="button_color" style="background: green">Status</button>`
+                            }else{
+                                element.innerHTML = `<button class="button_color" style="background: red">Status</button>`
+                            }
+                        })
+                    }
+                })
+            }
+        )
+</script>
+
+</body>
+</html>

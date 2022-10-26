@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+<body>
+
+<form method="post">
+    {% csrf_token %}
+    {% for field in form %}
+        <div class="form-group">
+            <label for="{{ field.id_for_label }}">{{ field.label }}:</label>
+            {{ field }}
+        </div>
+        {% if messages %}
+            {% for msg in messages %}
+                <span class="text-danger">{{ msg }}</span>
+            {% endfor %}
+        {% endif %}
+    {% endfor %}
+    <button type="submit">Submit</button>
+
+</form>
+
+</body>
+</html>
