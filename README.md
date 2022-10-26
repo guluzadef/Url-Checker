@@ -9,8 +9,6 @@
 
 - **Install requiremets**: `pip3 install -r requirements.txt`
 
-- **Create Database** : `docker-compose up --build -d
-`
 
 - **Migrate Database** : `python manage.py makemigrations` **after** `python manage.py migrate`
 
