@@ -1,9 +1,9 @@
 <div align="center">
-  <h1>Url Task</h1>
+  <h1>Url Checker</h1>
 </div>
 
 - **Clone**: `git clone https://github.com/guluzadef/Url-Checker.git`
-- **After Clone**: `cd django_task`
+- **After Clone**: `cd Url-Checker`
 
 - **Create and Activate virtualenv**: `python3 -m venv venv`  **after** `source /venv/bin/activate`
 
